@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layouts/master')
 @section('content')
     <div class="w-full max-w-xs justify-center mx-auto mt-20 font-serif ">
         <form action="login" method="POST" class="bg-white shadow-xl rounded px-8 pt-6 pb-8 mb-4">
