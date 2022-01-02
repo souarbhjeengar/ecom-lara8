@@ -2,7 +2,31 @@
 
 namespace App\Http;
 
+use Fruitcake\Cors\HandleCors;
+use App\Http\Middleware\TrimStrings;
+use App\Http\Middleware\VerifyCsrfToken;
+use Illuminate\Auth\Middleware\Authorize;
+use Illuminate\Http\Middleware\TrustHosts;
+use Illuminate\Auth\Middleware\Authenticate;
+use Illuminate\Http\Middleware\TrustProxies;
+use Illuminate\Auth\Middleware\RequirePassword;
+use Illuminate\Http\Middleware\SetCacheHeaders;
+use Illuminate\Session\Middleware\StartSession;
+use App\Http\Middleware\RedirectIfAuthenticated;
+use Illuminate\Cookie\Middleware\EncryptCookies;
+use Illuminate\Routing\Middleware\ThrottleRequests;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Illuminate\Routing\Middleware\ValidateSignature;
+use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
+use Illuminate\Routing\Middleware\SubstituteBindings;
+use Illuminate\Session\Middleware\AuthenticateSession;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
+use Illuminate\Foundation\Http\Middleware\ValidatePostSize;
+use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull;
+use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
+use Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance;
 
 class Kernel extends HttpKernel
 {
@@ -16,6 +40,9 @@ class Kernel extends HttpKernel
     protected $middleware = [
         // \App\Http\Middleware\TrustHosts::class,
         \App\Http\Middleware\TrustProxies::class,
+        \App\Http\Middleware\userauth::class,
+    \Illuminate\Session\Middleware\StartSession::class,
+
         \Fruitcake\Cors\HandleCors::class,
         \App\Http\Middleware\PreventRequestsDuringMaintenance::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
