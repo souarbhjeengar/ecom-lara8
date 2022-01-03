@@ -10,7 +10,7 @@ class SliderController extends Controller
     public function index()
 {
 
-  $data= product::all();
-return view('slider',['products'=>$data]);
+//   $data= Product::all();
+// return view('slider',['products'=>$data]);
 }
 }
